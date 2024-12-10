@@ -1,0 +1,5 @@
+{
+  "LogReporting.LoggingEnabled": "True",
+  "LogReporting.LogLevel": "Trace",
+  "LogReporting.DefaultName": "Test report"
+}
