@@ -1,4 +1,9 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="JiraLogin" sap:VirtualizedContainerService.HintSize="1668,2005" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="JiraLogin" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="uiJira" Type="InOutArgument(ui:UiElement)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>1668,2596</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -92,32 +97,36 @@
       <AssemblyReference>mscorlib</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Jira Login" sap:VirtualizedContainerService.HintSize="1678,1940" sap2010:WorkflowViewState.IdRef="Sequence_16">
+  <Sequence DisplayName="Jira_Login" sap:VirtualizedContainerService.HintSize="1678,2531" sap2010:WorkflowViewState.IdRef="Sequence_16">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strJiraUsername" />
       <Variable x:TypeArguments="ss:SecureString" Name="sstrJiraPassword" />
+      <Variable x:TypeArguments="x:String" Name="strJiraHeaderAfterLogin" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Config(&quot;NUS_JiraCredentials&quot;).ToString" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Config(&quot;OrchestratorQueueFolder&quot;).ToString" sap:VirtualizedContainerService.HintSize="1616,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[sstrJiraPassword]" Username="[strJiraUsername]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Launch Jira" sap:VirtualizedContainerService.HintSize="1616,1646" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="551a91ff-6af1-4173-82fd-a2f48ee2a33e" Version="V2">
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Config(&quot;NUS_JiraCredentials&quot;).ToString" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;)]" sap:VirtualizedContainerService.HintSize="1616,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[sstrJiraPassword]" Username="[strJiraUsername]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Launch Jira" sap:VirtualizedContainerService.HintSize="1616,1602" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" OutUiElement="[uiJira]" ScopeGuid="551a91ff-6af1-4173-82fd-a2f48ee2a33e" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1582,1429" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence DisplayName="Login to jira" sap:VirtualizedContainerService.HintSize="1582,1385" sap2010:WorkflowViewState.IdRef="Sequence_11">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NCheckState DisplayName="Check App State 'Zaloguj się,'" sap:VirtualizedContainerService.HintSize="1520,1314" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="551a91ff-6af1-4173-82fd-a2f48ee2a33e" Timeout="3" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'Zaloguj się,'" sap:VirtualizedContainerService.HintSize="1520,1274" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="551a91ff-6af1-4173-82fd-a2f48ee2a33e" Timeout="[CInt(Config(&quot;Jira_General_TimeOut&quot;))]" Version="V3">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,1057" sap2010:WorkflowViewState.IdRef="Sequence_12">
                   <sap:WorkflowViewStateService.ViewState>
@@ -125,7 +134,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT username'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="551a91ff-6af1-4173-82fd-a2f48ee2a33e" Text="wanda.kurowska.ext@veolia.com" Version="V3">
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT username'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="551a91ff-6af1-4173-82fd-a2f48ee2a33e" Text="[strJiraUsername]" Version="V3">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable BrowserURL="https://id.atlassian.com/login?continue=https%3A%2F%2Fid.atlassian.com%2Fjoin%2Fuser-access%3Fresource%3Dari%253Acloud%253Ajira%253A%253Asite%252F4d275305-f95c-4d1a-bfdc-82294c647268%26continue%3Dhttps%253A%252F%252Fveolia-pl.atlassian.net%252Fjira%252F&amp;application=jira" DesignTimeRectangle="809, 382, 318, 36" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT username'" FullSelectorArgument="&lt;webctrl id='username' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='username' tag='INPUT' type='email' class='css-1kxou5n' aaname='' /&gt;" Guid="3e6f2142-f154-4b01-b8ba-0d35e97c0a41" InformativeScreenshot="cbec4d30acf7a19aeead792f71321dee.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Zaloguj się, aby kontynuować - Zaloguj się przy użyciu konta Atlassian' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
                     </uix:NTypeInto.Target>
@@ -148,7 +157,7 @@
                       </uix:VerifyExecutionOptions>
                     </uix:NClick.VerifyOptions>
                   </uix:NClick>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" IsPassword="True" ScopeIdentifier="551a91ff-6af1-4173-82fd-a2f48ee2a33e" Text="nG!o8x:,;qeM" Version="V3">
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" IsPassword="True" ScopeIdentifier="551a91ff-6af1-4173-82fd-a2f48ee2a33e" SecureText="[sstrJiraPassword]" Version="V3">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable BrowserURL="https://id.atlassian.com/login?continue=https%3A%2F%2Fid.atlassian.com%2Fjoin%2Fuser-access%3Fresource%3Dari%253Acloud%253Ajira%253A%253Asite%252F4d275305-f95c-4d1a-bfdc-82294c647268%26continue%3Dhttps%253A%252F%252Fveolia-pl.atlassian.net%252Fjira%252F&amp;application=jira&amp;email=wanda.kurowska.ext%40veolia.com" DesignTimeRectangle="809, 406, 284, 36" DesignTimeScaleFactor="1" ElementType="InputBoxPassword" FriendlyName="'INPUT password'" FullSelectorArgument="&lt;webctrl id='password' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='password' tag='INPUT' type='password' class='css-1kxou5n' aaname='' /&gt;" Guid="125eda03-4747-4baf-b3fd-f47d9a5dd5e4" InformativeScreenshot="fa9976d64933b45afe195cad8492a9e9.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Zaloguj się, aby kontynuować - Zaloguj się przy użyciu konta Atlassian' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
                     </uix:NTypeInto.Target>
@@ -175,12 +184,15 @@
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
                 <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="1016,590" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="strJiraHeaderAfterLogin" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NCheckState DisplayName="Check App State 'Twoja praca'" sap:VirtualizedContainerService.HintSize="954,475" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="551a91ff-6af1-4173-82fd-a2f48ee2a33e" Version="V3">
+                  <uix:NCheckState DisplayName="Check App State 'Witaj, Wanda Kurowska!'" sap:VirtualizedContainerService.HintSize="954,475" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="551a91ff-6af1-4173-82fd-a2f48ee2a33e" Timeout="[CInt(Config(&quot;Jira_General_TimeOut&quot;))]" Version="V3">
                     <uix:NCheckState.IfExists>
                       <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,258" sap2010:WorkflowViewState.IdRef="Sequence_14">
                         <sap:WorkflowViewStateService.ViewState>
@@ -198,11 +210,11 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Throw Exception="[New Exception(&quot;Not able to recognize Jira state.&quot;)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                        <Throw DisplayName="Throw SE" Exception="[New Exception(&quot;Not able to recognize Jira state.&quot;)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
                       </Sequence>
                     </uix:NCheckState.IfNotExists>
                     <uix:NCheckState.Target>
-                      <uix:TargetAnchorable BrowserURL="https://veolia-pl.atlassian.net/jira/your-work" DesignTimeRectangle="159, 107, 76, 32" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Twoja praca'" FullSelectorArgument="&lt;webctrl aaname='Twoja praca' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Twoja praca' tag='SPAN' type='' class='css-178ag6o' check:innerText='Twoja praca' /&gt;" Guid="2dc2dceb-a32f-4f38-bbc9-e8f6912a2a09" InformativeScreenshot="dc096cda0315a1ed295223d36b4dbf18.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Twoja praca - Jira' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                      <uix:TargetAnchorable BrowserURL="https://home.atlassian.com/o/e6e49194-90cd-4810-b4bb-ce02e8a9ab2d/?cloudId=4d275305-f95c-4d1a-bfdc-82294c647268" DesignTimeRectangle="412, 183, 1296, 32" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Witaj, Wanda Kurowska!'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='H1' aaname='{0}' class='css-xtidjr' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;h1' innertext='Witaj, Wanda Kurowska!' parentid='root' /&gt;&quot;, strJiraHeaderAfterLogin)]" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl tag='H1' aaname='{0}' class='css-xtidjr' type='' innertext='Witaj, Wanda Kurowska!' parentid='root' check:text='Witaj, Wanda Kurowska!' /&gt;&quot;, strJiraHeaderAfterLogin)]" Guid="cfadbc8b-67d5-4b72-bc6b-70115ba61717" InformativeScreenshot="d20d861a733eef729f398571677d1168.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Atlassian Home' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
                     </uix:NCheckState.Target>
                   </uix:NCheckState>
                 </Sequence>
@@ -210,13 +222,52 @@
               <uix:NCheckState.Target>
                 <uix:TargetAnchorable BrowserURL="https://id.atlassian.com/login?continue=https%3A%2F%2Fid.atlassian.com%2Fjoin%2Fuser-access%3Fresource%3Dari%253Acloud%253Ajira%253A%253Asite%252F4d275305-f95c-4d1a-bfdc-82294c647268%26continue%3Dhttps%253A%252F%252Fveolia-pl.atlassian.net%252Fjira%252F&amp;application=jira" DesignTimeRectangle="861, 344, 213, 20" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Zaloguj się,'" FullSelectorArgument="&lt;webctrl tag='H5' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='H5' type='' class='' aaname='Zaloguj się, aby kontynuować' check:innerText='Zaloguj się, aby kontynuować' /&gt;" Guid="d14918fe-9a74-4ebe-b2fc-04337ca806b1" InformativeScreenshot="93caa11e600113ce75b881480cb29615.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Zaloguj się, aby kontynuować - Zaloguj się przy użyciu konta Atlassian' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </uix:NCheckState>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
       <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF5SURBVDhPldPfSsJgGAbw4R+0IMQKrRxWogZdQlfRSRElIURlUaRoaVEOLbqCjqKzDjvrJNELCIJArCSCQipElgWGRcXc1/PBt1hWNj/4IRvv8+5hTK7R8SaInmKXzR+E/TDBLps7CDrgAk7Bzm5rP/TJIDEBdlv7QWgHCHMC2ltg2AiHLEw118Idl0wIHKkWaG+hH82O60eywxjeV4Wp/1u0+q94ky9/bhzL5Z3R6i4CsmoB1biFZaYQbpu6llsmL2Xr7C19ByVVmPq7RVeozHculnLtc/fEMl0gWHTsFqSDugXU7y346HO4J/Ik24Mi6VwoEmvg7sYZq/owLKrC1M8WnmSNd8Xfc71rL4SPVkh3+JHYlsQiDGJ4TxVWfG/h3SIRz6ZM3AmJ9G+8EedqlThWKmf20EMHBoegzIKKGswrYQMIkIEU2qRcwke6b/112RYUdRikH5UAaUgxGYiBTlliBDM1sE1/ZbM7Wfv6G2PQAOY6Bo7juE979jL4eaVciwAAAABJRU5ErkJggg==" InformativeScreenshot="a6b7aa04a50ead55cee2f54712df8dc1.jpg" Selector="&lt;html app='chrome.exe' url='https://veolia-pl.atlassian.net/jira/' /&gt;" Title="Zaloguj się, aby kontynuować - Zaloguj się przy użyciu konta Atlassian" Url="https://veolia-pl.atlassian.net/jira/" />
+        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF5SURBVDhPldPfSsJgGAbw4R+0IMQKrRxWogZdQlfRSRElIURlUaRoaVEOLbqCjqKzDjvrJNELCIJArCSCQipElgWGRcXc1/PBt1hWNj/4IRvv8+5hTK7R8SaInmKXzR+E/TDBLps7CDrgAk7Bzm5rP/TJIDEBdlv7QWgHCHMC2ltg2AiHLEw118Idl0wIHKkWaG+hH82O60eywxjeV4Wp/1u0+q94ky9/bhzL5Z3R6i4CsmoB1biFZaYQbpu6llsmL2Xr7C19ByVVmPq7RVeozHculnLtc/fEMl0gWHTsFqSDugXU7y346HO4J/Ik24Mi6VwoEmvg7sYZq/owLKrC1M8WnmSNd8Xfc71rL4SPVkh3+JHYlsQiDGJ4TxVWfG/h3SIRz6ZM3AmJ9G+8EedqlThWKmf20EMHBoegzIKKGswrYQMIkIEU2qRcwke6b/112RYUdRikH5UAaUgxGYiBTlliBDM1sE1/ZbM7Wfv6G2PQAOY6Bo7juE979jL4eaVciwAAAABJRU5ErkJggg==" InformativeScreenshot="a6b7aa04a50ead55cee2f54712df8dc1.jpg" Selector="&lt;html app='chrome.exe' url='https://veolia-pl.atlassian.net/jira/' /&gt;" Title="Zaloguj się, aby kontynuować - Zaloguj się przy użyciu konta Atlassian" Url="[Config(&quot;Jira_url_login&quot;)]" />
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
+    <Assign sap:VirtualizedContainerService.HintSize="1616,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strJiraHeaderAfterLogin]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Config("Jira_HeaderAfterLogin")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uix:NCheckState DisplayName="Check App State 'Witaj, Wanda Kurowska!'" sap:VirtualizedContainerService.HintSize="1616,473" sap2010:WorkflowViewState.IdRef="NCheckState_3" Timeout="[CInt(Config(&quot;Jira_General_TimeOut&quot;))]" Version="V3">
+      <uix:NCheckState.IfExists>
+        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,256" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Log in to jira - success&quot;]" />
+        </Sequence>
+      </uix:NCheckState.IfExists>
+      <uix:NCheckState.IfNotExists>
+        <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,203" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw DisplayName="Throw SE" Exception="[New Exception(&quot;Login to jira - failed&quot;)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_2" />
+        </Sequence>
+      </uix:NCheckState.IfNotExists>
+      <uix:NCheckState.Target>
+        <uix:TargetAnchorable BrowserURL="https://home.atlassian.com/o/e6e49194-90cd-4810-b4bb-ce02e8a9ab2d/?cloudId=4d275305-f95c-4d1a-bfdc-82294c647268" DesignTimeRectangle="412, 183, 1296, 32" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Witaj, Wanda Kurowska!'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='H1' aaname='{0}' class='css-xtidjr' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;h1' innertext='{0}' parentclass=' css-1cd2jsg' parentid='root' /&gt;&quot;, strJiraHeaderAfterLogin)]" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl tag='H1' aaname='{0}' class='css-xtidjr' type='' innertext='{0}' parentclass=' css-1cd2jsg' parentid='root' check:text='Witaj, Wanda Kurowska!' /&gt;&quot;, strJiraHeaderAfterLogin)]" Guid="7f8af52b-b236-4a00-b69b-3bebd9c25a09" InformativeScreenshot="6e7aca92eddec0da0378767dd25906ea.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Atlassian Home' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+      </uix:NCheckState.Target>
+    </uix:NCheckState>
   </Sequence>
 </Activity>

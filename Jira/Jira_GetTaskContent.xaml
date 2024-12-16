@@ -1,9 +1,10 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetTaskContent" this:GetTaskContent.strTaskUrl="https://veolia-pl.atlassian.net/browse/FHZ-69938" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetTaskContent" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="strTaskUrl" Type="InArgument(x:String)" />
     <x:Property Name="strTaskContent" Type="OutArgument(x:String)" />
+    <x:Property Name="uiJira" Type="InOutArgument(ui:UiElement)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1092,1496</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>582,1072</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -108,18 +109,13 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get Task Content" sap:VirtualizedContainerService.HintSize="592,1007" sap2010:WorkflowViewState.IdRef="Sequence_7">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="input" />
-      <Variable x:TypeArguments="x:String" Name="strSaamsId" />
-      <Variable x:TypeArguments="x:String" Name="strModuł" />
-    </Sequence.Variables>
+  <Sequence DisplayName="Jira_GetTaskContent" sap:VirtualizedContainerService.HintSize="592,867" sap2010:WorkflowViewState.IdRef="Sequence_7">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard sap2010:Annotation.AnnotationText="&#xD;&#xA;https://veolia-pl.atlassian.net/browse/FHZ-71828&#xD;&#xA;https://veolia-pl.atlassian.net/browse/FHZ-71817&#xD;&#xA;https://veolia-pl.atlassian.net/browse/FHZ-70019&#xD;&#xA;https://veolia-pl.atlassian.net/browse/FHZ-69938&#xD;&#xA;" AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="530,896" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="Always" ScopeGuid="51850955-518a-49b6-941e-e4d94eedf61b" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="&#xA;" AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="530,756" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InUiElement="[uiJira]" InteractionMode="DebuggerApi" OpenMode="Always" OutUiElement="[uiJira]" ScopeGuid="51850955-518a-49b6-941e-e4d94eedf61b" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
