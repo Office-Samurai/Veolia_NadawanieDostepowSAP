@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>963,4646</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>967,4648</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -130,9 +130,12 @@
       <AssemblyReference>System.IO.Packaging</AssemblyReference>
       <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="859,4581" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="720,4583" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtExtractedTasksList" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtAllQueueData" />
@@ -146,8 +149,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="797,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="797,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="658,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="658,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strTasksToBeProcessed]</OutArgument>
       </Assign.To>
@@ -155,7 +158,7 @@
         <InArgument x:TypeArguments="x:String">[TransactionItem.SpecificContent("TasksToBeProcessed").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[String.IsNullOrEmpty(strTasksToBeProcessed)]" sap:VirtualizedContainerService.HintSize="797,1974" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[String.IsNullOrEmpty(strTasksToBeProcessed)]" sap:VirtualizedContainerService.HintSize="658,1976" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -171,43 +174,39 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Jira_GetTaskList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Jira\Jira_GetTaskList.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InOutArgument x:TypeArguments="ui:UiElement" x:Key="uiJira">
-                <VisualBasicReference x:TypeArguments="ui:UiElement" ExpressionText="uiJira" />
-              </InOutArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="dtModifiedTasksList">
-                <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtModifiedTasksList" />
-              </OutArgument>
+              <InOutArgument x:TypeArguments="ui:UiElement" x:Key="uiJira">[uiJira]</InOutArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="dtModifiedTasksList">[dtModifiedTasksList]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="763,1591" sap2010:WorkflowViewState.IdRef="Sequence_15">
+        <Sequence sap:VirtualizedContainerService.HintSize="624,1593" sap2010:WorkflowViewState.IdRef="Sequence_15">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:BuildDataTable DataTable="[dtModifiedTasksList]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="721,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Id&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Title&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Url&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;1000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="721,1403" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[strTasksToBeProcessed.Split(&quot;;&quot;)]">
+          <ui:BuildDataTable DataTable="[dtModifiedTasksList]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="582,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Id&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Title&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Url&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;1000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="582,1405" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[strTasksToBeProcessed.Split(&quot;;&quot;)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="currentTask" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="687,1217" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="548,1219" sap2010:WorkflowViewState.IdRef="Sequence_16">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: [FHZ-71913] Nadanie uprawnień - SAP ERP [FHZ-FIN-SAP] TASK3463646 - Jira" sap:VirtualizedContainerService.HintSize="645,1129" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[uiJira]" InteractionMode="DebuggerApi" OutUiElement="[uiJira]" ScopeGuid="71d32bd1-3a6b-42b0-b8dd-1134048ac73d" Version="V2">
+                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: [FHZ-71913] Nadanie uprawnień - SAP ERP [FHZ-FIN-SAP] TASK3463646 - Jira" sap:VirtualizedContainerService.HintSize="506,1131" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[uiJira]" InteractionMode="DebuggerApi" OutUiElement="[uiJira]" ScopeGuid="71d32bd1-3a6b-42b0-b8dd-1134048ac73d" Version="V2">
                     <uix:NApplicationCard.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="472,992" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="472,994" sap2010:WorkflowViewState.IdRef="Sequence_17">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -269,7 +268,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtModifiedTasksList]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="797,2081" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtModifiedTasksList]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="658,2081" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -294,7 +293,7 @@
                 <OutArgument x:TypeArguments="x:String">[strTaskStatusFileName]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[Config("Excel_TaskStatus_FileName").Replace("&lt;TaskName&gt;",task("Title").ToString)]</InArgument>
+                <InArgument x:TypeArguments="x:String">[Config("Excel_TaskStatus_FileName").Replace("&lt;TaskName&gt;",task("Id").ToString)]</InArgument>
               </Assign.Value>
             </Assign>
             <ui:FileExistsX DisplayName="File Exists" Exists="[boolTaskStatusFileExists]" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[Path.Combine(Config(&quot;Excel_TaskStatus_FolderName&quot;),strTaskStatusFileName)]" />
@@ -316,28 +315,16 @@
             </If>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Jira_GetTaskContent.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Jira\Jira_GetTaskContent.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="strTaskUrl">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="task(&quot;Url&quot;).ToString" />
-                </InArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="strTaskContent">
-                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strTaskContent" />
-                </OutArgument>
-                <InOutArgument x:TypeArguments="ui:UiElement" x:Key="uiJira">
-                  <VisualBasicReference x:TypeArguments="ui:UiElement" ExpressionText="uiJira" />
-                </InOutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="strTaskUrl">[task("Url").ToString]</InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="strTaskContent">[strTaskContent]</OutArgument>
+                <InOutArgument x:TypeArguments="ui:UiElement" x:Key="uiJira">[uiJira]</InOutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Jira_ExtractDataFromTaskContent.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Jira\Jira_ExtractDataFromTaskContent.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="strTaskContent">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strTaskContent" />
-                </InArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dtTaskData">
-                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtTaskData" />
-                </InOutArgument>
-                <OutArgument x:TypeArguments="sd:DataTable" x:Key="dtOWU">
-                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtOWU" />
-                </OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="strTaskContent">[strTaskContent]</InArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dtTaskData">[dtTaskData]</InOutArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="dtOWU">[dtOWU]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[dtTaskData]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="434,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[Config(&quot;Excel_TaskStatus_TaskData_SheetName&quot;)]" WorkbookPath="[Path.Combine(Config(&quot;Excel_TaskStatus_FolderName&quot;),strTaskStatusFileName)]" />
@@ -378,11 +365,12 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="True" DisplayName="Add Queue Item" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;)]" sap:VirtualizedContainerService.HintSize="434,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="Config(&quot;OrchestratorQueueName_Performer&quot;)" Reference="[task(&quot;Id&quot;).ToString]">
+            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="True" DisplayName="Add Queue Item" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;)]" sap:VirtualizedContainerService.HintSize="434,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[Config(&quot;OrchestratorQueueName_Performer&quot;)]" Reference="[task(&quot;Id&quot;).ToString+&quot; &quot;+Now.ToString(&quot;dd.MM HH:mm:ss&quot;)]">
               <ui:AddQueueItem.ItemInformation>
                 <InArgument x:TypeArguments="x:String" x:Key="TaskTitle">[task("Title").ToString]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="TaskUrl">[task("Url").ToString]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="TaskStatusFileName">[strTaskStatusFileName]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="TaskName">[task("Id").ToString]</InArgument>
               </ui:AddQueueItem.ItemInformation>
             </ui:AddQueueItem>
           </Sequence>

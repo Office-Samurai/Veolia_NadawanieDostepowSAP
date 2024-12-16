@@ -4,7 +4,7 @@
     <x:Property Name="strTaskContent" Type="OutArgument(x:String)" />
     <x:Property Name="uiJira" Type="InOutArgument(ui:UiElement)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>582,1072</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>967,932</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -115,7 +115,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard sap2010:Annotation.AnnotationText="&#xA;" AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="530,756" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InUiElement="[uiJira]" InteractionMode="DebuggerApi" OpenMode="Always" OutUiElement="[uiJira]" ScopeGuid="51850955-518a-49b6-941e-e4d94eedf61b" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="&#xA;" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="530,756" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InUiElement="[uiJira]" InteractionMode="Simulate" OpenMode="IfNotOpen" OutUiElement="[uiJira]" ScopeGuid="51850955-518a-49b6-941e-e4d94eedf61b" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>

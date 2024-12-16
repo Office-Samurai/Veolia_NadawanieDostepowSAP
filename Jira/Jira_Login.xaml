@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="uiJira" Type="InOutArgument(ui:UiElement)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1668,2596</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1668,2600</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -101,7 +101,7 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Jira_Login" sap:VirtualizedContainerService.HintSize="1678,2531" sap2010:WorkflowViewState.IdRef="Sequence_16">
+  <Sequence DisplayName="Jira_Login" sap:VirtualizedContainerService.HintSize="1678,2535" sap2010:WorkflowViewState.IdRef="Sequence_16">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strJiraUsername" />
       <Variable x:TypeArguments="ss:SecureString" Name="sstrJiraPassword" />
@@ -112,14 +112,22 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Config(&quot;NUS_JiraCredentials&quot;).ToString" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;)]" sap:VirtualizedContainerService.HintSize="1616,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[sstrJiraPassword]" Username="[strJiraUsername]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Launch Jira" sap:VirtualizedContainerService.HintSize="1616,1602" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" OutUiElement="[uiJira]" ScopeGuid="551a91ff-6af1-4173-82fd-a2f48ee2a33e" Version="V2">
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[Config(&quot;Jira_CredentialsAssetName&quot;)]" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;)]" sap:VirtualizedContainerService.HintSize="1616,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[sstrJiraPassword]" Username="[strJiraUsername]" />
+    <Assign sap:VirtualizedContainerService.HintSize="1616,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strJiraHeaderAfterLogin]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Config("Jira_HeaderAfterLogin")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Launch Jira" sap:VirtualizedContainerService.HintSize="1616,1604" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" OutUiElement="[uiJira]" ScopeGuid="551a91ff-6af1-4173-82fd-a2f48ee2a33e" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Login to jira" sap:VirtualizedContainerService.HintSize="1582,1385" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence DisplayName="Login to jira" sap:VirtualizedContainerService.HintSize="1582,1387" sap2010:WorkflowViewState.IdRef="Sequence_11">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -183,7 +191,7 @@
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="1016,590" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="1016,586" sap2010:WorkflowViewState.IdRef="Sequence_13">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="strJiraHeaderAfterLogin" />
                   </Sequence.Variables>
@@ -236,17 +244,9 @@
         <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF5SURBVDhPldPfSsJgGAbw4R+0IMQKrRxWogZdQlfRSRElIURlUaRoaVEOLbqCjqKzDjvrJNELCIJArCSCQipElgWGRcXc1/PBt1hWNj/4IRvv8+5hTK7R8SaInmKXzR+E/TDBLps7CDrgAk7Bzm5rP/TJIDEBdlv7QWgHCHMC2ltg2AiHLEw118Idl0wIHKkWaG+hH82O60eywxjeV4Wp/1u0+q94ky9/bhzL5Z3R6i4CsmoB1biFZaYQbpu6llsmL2Xr7C19ByVVmPq7RVeozHculnLtc/fEMl0gWHTsFqSDugXU7y346HO4J/Ik24Mi6VwoEmvg7sYZq/owLKrC1M8WnmSNd8Xfc71rL4SPVkh3+JHYlsQiDGJ4TxVWfG/h3SIRz6ZM3AmJ9G+8EedqlThWKmf20EMHBoegzIKKGswrYQMIkIEU2qRcwke6b/112RYUdRikH5UAaUgxGYiBTlliBDM1sE1/ZbM7Wfv6G2PQAOY6Bo7juE979jL4eaVciwAAAABJRU5ErkJggg==" InformativeScreenshot="a6b7aa04a50ead55cee2f54712df8dc1.jpg" Selector="&lt;html app='chrome.exe' url='https://veolia-pl.atlassian.net/jira/' /&gt;" Title="Zaloguj się, aby kontynuować - Zaloguj się przy użyciu konta Atlassian" Url="[Config(&quot;Jira_url_login&quot;)]" />
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <Assign sap:VirtualizedContainerService.HintSize="1616,82" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[strJiraHeaderAfterLogin]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Config("Jira_HeaderAfterLogin")]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <uix:NCheckState DisplayName="Check App State 'Witaj, Wanda Kurowska!'" sap:VirtualizedContainerService.HintSize="1616,473" sap2010:WorkflowViewState.IdRef="NCheckState_3" Timeout="[CInt(Config(&quot;Jira_General_TimeOut&quot;))]" Version="V3">
+    <uix:NCheckState DisplayName="Check App State 'Witaj, Wanda Kurowska!'" sap:VirtualizedContainerService.HintSize="1616,475" sap2010:WorkflowViewState.IdRef="NCheckState_3" Timeout="[CInt(Config(&quot;Jira_General_TimeOut&quot;))]" Version="V3">
       <uix:NCheckState.IfExists>
-        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,256" sap2010:WorkflowViewState.IdRef="Sequence_17">
+        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,258" sap2010:WorkflowViewState.IdRef="Sequence_17">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -256,7 +256,7 @@
         </Sequence>
       </uix:NCheckState.IfExists>
       <uix:NCheckState.IfNotExists>
-        <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,203" sap2010:WorkflowViewState.IdRef="Sequence_18">
+        <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_18">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
