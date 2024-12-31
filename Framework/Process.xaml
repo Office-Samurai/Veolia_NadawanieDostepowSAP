@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>823,3503</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1172,3544</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -137,7 +137,7 @@
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="572,3438" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="572,3479" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtExtractedTasksList" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtAllQueueData" />
@@ -176,7 +176,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <If Condition="[String.IsNullOrEmpty(strTasksToBeProcessed)]" sap:VirtualizedContainerService.HintSize="510,675" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[String.IsNullOrEmpty(strTasksToBeProcessed)]" sap:VirtualizedContainerService.HintSize="510,676" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -216,7 +216,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="476,353" sap2010:WorkflowViewState.IdRef="Sequence_15">
+        <Sequence sap:VirtualizedContainerService.HintSize="476,354" sap2010:WorkflowViewState.IdRef="Sequence_15">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -334,7 +334,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CommentOut>
-          <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[Config("Jira_Filtr")]</OutArgument>
             </Assign.To>
@@ -350,13 +350,13 @@
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="dtModifiedTasksList">[dtModifiedTasksList]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtModifiedTasksList]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,2099" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtModifiedTasksList]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,2139" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="task" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,1913" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,1953" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dtExtractedTaskData" />
               <Variable x:TypeArguments="x:String" Name="strTaskContent" />
@@ -370,25 +370,42 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign TaskStatus file path" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign DisplayName="Assign TaskStatus file path" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[strTaskStatusFileName]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[Config("Excel_TaskStatus_FileName").Replace("&lt;TaskName&gt;",task("Id").ToString)]</InArgument>
+                <InArgument x:TypeArguments="x:String">[Config("Excel_TaskStatus_FileName").Replace("&lt;TaskName&gt;",task("Key").ToString)]</InArgument>
               </Assign.Value>
             </Assign>
             <ui:FileExistsX DisplayName="File Exists" Exists="[boolTaskStatusFileExists]" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[Path.Combine(Config(&quot;Excel_TaskStatus_FolderName&quot;),strTaskStatusFileName)]" />
-            <If Condition="[boolTaskStatusFileExists = True]" sap:VirtualizedContainerService.HintSize="434,556" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[boolTaskStatusFileExists = True]" sap:VirtualizedContainerService.HintSize="434,503" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,294" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <Sequence sap:VirtualizedContainerService.HintSize="376,321" sap2010:WorkflowViewState.IdRef="Sequence_19">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;File &quot;+strTaskStatusFileName+&quot; exists in folder&quot;]" />
-                  <ui:Continue sap:VirtualizedContainerService.HintSize="334,25" sap2010:WorkflowViewState.IdRef="Continue_1" />
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,52" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:Continue sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Continue_1" />
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
                 </Sequence>
               </If.Then>
               <If.Else>
@@ -470,12 +487,35 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="True" DisplayName="Add Queue Item" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;)]" sap:VirtualizedContainerService.HintSize="434,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[Config(&quot;OrchestratorQueueName_Performer&quot;)]" Reference="[task(&quot;Id&quot;).ToString+&quot; &quot;+Now.ToString(&quot;dd.MM HH:mm:ss&quot;)]">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,305" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="True" DisplayName="Add Queue Item" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;)]" sap:VirtualizedContainerService.HintSize="388,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[Config(&quot;OrchestratorQueueName_Performer&quot;)]" Reference="[task(&quot;Id&quot;).ToString+&quot; &quot;+Now.ToString(&quot;dd.MM HH:mm:ss&quot;)]">
+                    <ui:AddQueueItem.ItemInformation>
+                      <InArgument x:TypeArguments="x:String" x:Key="TaskTitle">[task("Title").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="TaskUrl">[task("Url").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="TaskStatusFileName">[strTaskStatusFileName]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="TaskName">[task("Id").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="TaskKey">[task("Key").ToString]</InArgument>
+                    </ui:AddQueueItem.ItemInformation>
+                  </ui:AddQueueItem>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="True" DisplayName="Add Queue Item" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;)]" sap:VirtualizedContainerService.HintSize="434,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[Config(&quot;OrchestratorQueueName_Performer&quot;)]" Reference="[task(&quot;Key&quot;).ToString+&quot; &quot;+Now.ToString(&quot;dd.MM HH:mm:ss&quot;)]">
               <ui:AddQueueItem.ItemInformation>
-                <InArgument x:TypeArguments="x:String" x:Key="TaskTitle">[task("Title").ToString]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="TaskUrl">[task("Url").ToString]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="TaskStatusFileName">[strTaskStatusFileName]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="TaskName">[task("Id").ToString]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="TaskKey">[task("Key").ToString]</InArgument>
               </ui:AddQueueItem.ItemInformation>
             </ui:AddQueueItem>
