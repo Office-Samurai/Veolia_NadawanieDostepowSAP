@@ -237,7 +237,7 @@
                             <InArgument x:TypeArguments="x:String">[taskSection.Split(vbLf).First(Function(l) l.Contains("Użytkownik")).Split("(")(0).Split({" "}, StringSplitOptions.RemoveEmptyEntries).Last().Trim()]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <If Condition="[strSaamsId.Trim = &quot;SAC&quot;]" DisplayName="If SaamsID = SAC" sap:VirtualizedContainerService.HintSize="486,692" sap2010:WorkflowViewState.IdRef="If_2">
+                        <If Condition="[If(strSaamsId, &quot;&quot;).Trim = &quot;SAC&quot;]" DisplayName="If SaamsID = SAC" sap:VirtualizedContainerService.HintSize="486,692" sap2010:WorkflowViewState.IdRef="If_2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -251,7 +251,7 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <If Condition="[strCharakterZmian.Trim = &quot;Nadanie uprawnień&quot;]" DisplayName="If Charakter Zmian = Nadanie Uprawnień =&gt; Assign Email" sap:VirtualizedContainerService.HintSize="410,422" sap2010:WorkflowViewState.IdRef="If_3">
+                              <If Condition="[If(strCharakterZmian,&quot;&quot;).Trim = &quot;Nadanie uprawnień&quot;]" DisplayName="If Charakter Zmian = Nadanie Uprawnień =&gt; Assign Email" sap:VirtualizedContainerService.HintSize="410,422" sap2010:WorkflowViewState.IdRef="If_3">
                                 <If.Then>
                                   <Sequence sap:VirtualizedContainerService.HintSize="376,240" sap2010:WorkflowViewState.IdRef="Sequence_20">
                                     <sap:WorkflowViewStateService.ViewState>
