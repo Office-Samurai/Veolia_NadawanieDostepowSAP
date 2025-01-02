@@ -8,6 +8,7 @@
     "OfficeSamurai.Standard.Activities": "[2.1.3]",
     "UiPath.Excel.Activities": "[2.22.4]",
     "UiPath.Jira.Activities": "[2.4.4]",
+    "UiPath.Mail.Activities": "[1.15.2]",
     "UiPath.System.Activities": "[23.10.6]",
     "UiPath.Testing.Activities": "[23.10.1]",
     "UiPath.UIAutomation.Activities": "[23.10.13]"
