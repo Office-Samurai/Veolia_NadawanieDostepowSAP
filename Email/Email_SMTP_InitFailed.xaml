@@ -105,7 +105,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="IMPORTANT: ADD 'Veolia_Email_String' ASSET IN ORCH with email details&#xA;Email_Port : 25; Email_Server : relay.dlkpl.pl.dalkia.group.ve; Email_RecipmentsSE : katarzyna.widlo@office-samurai.com; Email_SenderAddress : rpa@veolia.com; Email_SenderName : RPA" DisplayName="Email_SMTP_InitFailed" sap:VirtualizedContainerService.HintSize="606,2690" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="IMPORTANT: ADD 'Email_String' ASSET IN ORCH with email details&#xA;Email_Port : 25; Email_Server : relay.dlkpl.pl.dalkia.group.ve; Email_RecipmentsSE : katarzyna.widlo@office-samurai.com; Email_SenderAddress : rpa@veolia.com; Email_SenderName : RPA" DisplayName="Email_SMTP_InitFailed" sap:VirtualizedContainerService.HintSize="606,2690" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictEmailDetails" />
       <Variable x:TypeArguments="x:String" Name="strBody" />
@@ -183,7 +183,7 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:LogMessage DisplayName="Log Message - Config is Null" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Config variable is Null&quot;]" />
           <ui:RaiseAlert TimeoutMS="{x:Null}" DisplayName="Raise Alert" sap:VirtualizedContainerService.HintSize="434,191" sap2010:WorkflowViewState.IdRef="RaiseAlert_4" Notification="[Left(&quot;System error at initialization: &quot; + SystemException.Message + &quot; at Source: &quot; + SystemException.Source,512)]" Severity="Info" />
-          <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Veolia_Email_String" CacheStrategy="None" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="434,143" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+          <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Email_String" CacheStrategy="None" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="434,143" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
             <ui:GetRobotAsset.Value>
               <OutArgument x:TypeArguments="x:String">[strEmailDetails]</OutArgument>
             </ui:GetRobotAsset.Value>
