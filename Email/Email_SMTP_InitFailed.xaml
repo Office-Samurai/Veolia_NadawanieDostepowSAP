@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>983,3192</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>983,2755</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Email_SMTP_InitFailed_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -105,7 +105,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="IMPORTANT: ADD 'Email_String' ASSET IN ORCH with email details&#xA;Email_Port : 25; Email_Server : relay.dlkpl.pl.dalkia.group.ve; Email_RecipmentsSE : katarzyna.widlo@office-samurai.com; Email_SenderAddress : rpa@veolia.com; Email_SenderName : RPA" DisplayName="Email_SMTP_InitFailed" sap:VirtualizedContainerService.HintSize="606,2689" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="IMPORTANT: ADD 'Veolia_Email_String' ASSET IN ORCH with email details&#xA;Email_Port : 25; Email_Server : relay.dlkpl.pl.dalkia.group.ve; Email_RecipmentsSE : katarzyna.widlo@office-samurai.com; Email_SenderAddress : rpa@veolia.com; Email_SenderName : RPA" DisplayName="Email_SMTP_InitFailed" sap:VirtualizedContainerService.HintSize="606,2690" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictEmailDetails" />
       <Variable x:TypeArguments="x:String" Name="strBody" />
@@ -118,7 +118,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[Config IsNot Nothing]" DisplayName="If Config IsNot Nothing" sap:VirtualizedContainerService.HintSize="544,2340" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[Config IsNot Nothing]" DisplayName="If Config IsNot Nothing" sap:VirtualizedContainerService.HintSize="544,2341" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Sequence DisplayName="Sequence Config IsNot Nothing" sap:VirtualizedContainerService.HintSize="510,1087" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
@@ -175,7 +175,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence Config Is Nothing" sap:VirtualizedContainerService.HintSize="476,1071" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence DisplayName="Sequence Config Is Nothing" sap:VirtualizedContainerService.HintSize="476,1072" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -188,7 +188,7 @@
               <OutArgument x:TypeArguments="x:String">[strEmailDetails]</OutArgument>
             </ui:GetRobotAsset.Value>
           </ui:GetRobotAsset>
-          <Assign DisplayName="strEmailDetails to dictEmailDetails" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_9">
+          <Assign DisplayName="strEmailDetails to dictEmailDetails" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
             <Assign.To>
               <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictEmailDetails]</OutArgument>
             </Assign.To>
