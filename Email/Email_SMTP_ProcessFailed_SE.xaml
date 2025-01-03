@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>983,1131</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1234,1125</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Email_SMTP_ProcessFailed_SE_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -97,7 +97,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Email_SMTP_ProcessFailed_SE" sap:VirtualizedContainerService.HintSize="530,1066" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Email_SMTP_ProcessFailed_SE" sap:VirtualizedContainerService.HintSize="530,1060" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="arrEmails" />
       <Variable x:TypeArguments="x:String" Name="strBody" />
@@ -107,9 +107,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[boolProductionRun]" DisplayName="Choose Prod/Dev mode" sap:VirtualizedContainerService.HintSize="468,460" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[boolProductionRun]" DisplayName="Choose Prod/Dev mode" sap:VirtualizedContainerService.HintSize="468,458" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Assign sap2010:Annotation.AnnotationText="All email addresses are stored in a string separated by semicolons.&#xA;&#xA;Converting this string into an array." DisplayName="Get array with email addresses - Prod" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign sap2010:Annotation.AnnotationText="All email addresses are stored in a string separated by semicolons.&#xA;&#xA;Converting this string into an array." DisplayName="Get array with email addresses - Prod" sap:VirtualizedContainerService.HintSize="434,138" sap2010:WorkflowViewState.IdRef="Assign_1">
           <Assign.To>
             <OutArgument x:TypeArguments="s:String[]">[arrEmails]</OutArgument>
           </Assign.To>
@@ -124,7 +124,7 @@
         </Assign>
       </If.Then>
       <If.Else>
-        <Assign sap2010:Annotation.AnnotationText="All email addresses are stored in a string separated by semicolons.&#xA;&#xA;Converting this string into an array." DisplayName="Get array with email addresses - Dev" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign sap2010:Annotation.AnnotationText="All email addresses are stored in a string separated by semicolons.&#xA;&#xA;Converting this string into an array." DisplayName="Get array with email addresses - Dev" sap:VirtualizedContainerService.HintSize="434,138" sap2010:WorkflowViewState.IdRef="Assign_2">
           <Assign.To>
             <OutArgument x:TypeArguments="s:String[]">[arrEmails]</OutArgument>
           </Assign.To>
@@ -139,7 +139,7 @@
         </Assign>
       </If.Else>
     </If>
-    <Assign DisplayName="Assign strBody" sap:VirtualizedContainerService.HintSize="468,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="Assign strBody" sap:VirtualizedContainerService.HintSize="468,81" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strBody]</OutArgument>
       </Assign.To>
@@ -147,7 +147,7 @@
         <InArgument x:TypeArguments="x:String">[Config("Email_BodyDispatcherSE").ToString.Replace("&lt;DateTimeNow&gt;", System.DateTime.Now.ToString("dd.MM.yyyy hh:mm tt")).Replace("&lt;strExeptionSource&gt;", If(SystemException.Source,"").ToString).Replace("&lt;strExeptionMessage&gt;", If(SystemException.Message,"").ToString)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[strBody]" DisplayName="Send SMTP Mail Message - Failed" Email="[Config(&quot;Email_SenderAddress&quot;).ToString]" EnableSSL="True" From="[Config(&quot;Email_SenderAddress&quot;).ToString]" sap:VirtualizedContainerService.HintSize="468,152" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="True" Name="[Config(&quot;Email_SenderName&quot;).ToString]" Port="[Integer.Parse(Config(&quot;Email_Port&quot;).ToString)]" SecureConnection="Auto" Server="[Config(&quot;Email_Server&quot;).ToString]" Subject="[Config(&quot;Email_SubjectSE&quot;).ToString]" To="[String.Join(&quot;;&quot;,arrEmails)]">
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[strBody]" DisplayName="Send SMTP Mail Message - Failed" Email="[Config(&quot;Email_SenderAddress&quot;).ToString]" EnableSSL="True" From="[Config(&quot;Email_SenderAddress&quot;).ToString]" sap:VirtualizedContainerService.HintSize="468,149" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="True" Name="[Config(&quot;Email_SenderName&quot;).ToString]" Port="[Integer.Parse(Config(&quot;Email_Port&quot;).ToString)]" SecureConnection="None" Server="[Config(&quot;Email_Server&quot;).ToString]" Subject="[Config(&quot;Email_SubjectSE&quot;).ToString]" To="[String.Join(&quot;;&quot;,arrEmails)]">
       <ui:SendMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
       </ui:SendMail.Files>

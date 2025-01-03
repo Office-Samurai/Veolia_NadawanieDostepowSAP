@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Jira_API_CheckAccess" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="983,1628" sap2010:WorkflowViewState.IdRef="Jira_API_CheckAccess_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Jira_API_CheckAccess" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1234,1628" sap2010:WorkflowViewState.IdRef="Jira_API_CheckAccess_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -115,7 +115,7 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Jira_API_CheckAccess" sap:VirtualizedContainerService.HintSize="548,1563" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Jira_API_CheckAccess" sap:VirtualizedContainerService.HintSize="572,1563" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="intResposeStatus" />
       <Variable x:TypeArguments="x:String" Name="strReponseContent" />
@@ -128,8 +128,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[Config(&quot;Jira_ApiToken&quot;)]" CacheStrategy="None" DisplayName="Get Credential: Jira Api Token" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;)]" sap:VirtualizedContainerService.HintSize="486,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[sstrJiraToken]" Username="[strJiraLogin]" />
-    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request: Get User Info" EnableSSLVerification="True" EndPoint="[Config(&quot;Jira_ServerUrl&quot;) + &quot;/rest/api/2/myself&quot;]" sap:VirtualizedContainerService.HintSize="486,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="GET" Result="[strReponseContent]" SecurePassword="[sstrJiraToken]" StatusCode="[intResposeStatus]" TimeoutMS="6000" Username="[strJiraLogin]">
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[Config(&quot;Jira_ApiToken&quot;)]" CacheStrategy="None" DisplayName="Get Credential: Jira Api Token" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;)]" sap:VirtualizedContainerService.HintSize="510,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[sstrJiraToken]" Username="[strJiraLogin]" />
+    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request: Get User Info" EnableSSLVerification="True" EndPoint="[Config(&quot;Jira_ServerUrl&quot;) + &quot;/rest/api/2/myself&quot;]" sap:VirtualizedContainerService.HintSize="510,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="GET" Result="[strReponseContent]" SecurePassword="[sstrJiraToken]" StatusCode="[intResposeStatus]" TimeoutMS="6000" Username="[strJiraLogin]">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -146,23 +146,23 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <Assign sap:VirtualizedContainerService.HintSize="486,82" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="njl:JObject">[jsonResponseContent]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="njl:JObject">[JsonConvert.DeserializeObject(Of JObject)(strReponseContent)]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <If Condition="[intResposeStatus = 200]" DisplayName="If intResposeStatus = 200" sap:VirtualizedContainerService.HintSize="486,1037" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[intResposeStatus = 200]" DisplayName="If intResposeStatus = 200" sap:VirtualizedContainerService.HintSize="510,1159" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="452,677" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="476,799" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[jsonResponseContent(&quot;active&quot;).ToString.ToLower = &quot;true&quot;]" sap:VirtualizedContainerService.HintSize="410,589" sap2010:WorkflowViewState.IdRef="If_2">
+          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="njl:JObject">[jsonResponseContent]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="njl:JObject">[JsonConvert.DeserializeObject(Of JObject)(strReponseContent)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[jsonResponseContent(&quot;active&quot;).ToString.ToLower = &quot;true&quot;]" sap:VirtualizedContainerService.HintSize="434,589" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
               <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <sap:WorkflowViewStateService.ViewState>

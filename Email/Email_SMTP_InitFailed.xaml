@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>983,2755</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1234,2751</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Email_SMTP_InitFailed_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -105,7 +105,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="IMPORTANT: ADD 'Email_String' ASSET IN ORCH with email details&#xA;Email_Port : 25; Email_Server : relay.dlkpl.pl.dalkia.group.ve; Email_RecipmentsSE : katarzyna.widlo@office-samurai.com; Email_SenderAddress : rpa@veolia.com; Email_SenderName : RPA" DisplayName="Email_SMTP_InitFailed" sap:VirtualizedContainerService.HintSize="606,2690" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="IMPORTANT: ADD 'Email_String' ASSET IN ORCH with email details&#xA;Email_Port : 25; Email_Server : relay.dlkpl.pl.dalkia.group.ve; Email_RecipmentsSE : katarzyna.widlo@office-samurai.com; Email_SenderAddress : rpa@veolia.com; Email_SenderName : RPA" DisplayName="Email_SMTP_InitFailed" sap:VirtualizedContainerService.HintSize="606,2686" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictEmailDetails" />
       <Variable x:TypeArguments="x:String" Name="strBody" />
@@ -118,18 +118,18 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[Config IsNot Nothing]" DisplayName="If Config IsNot Nothing" sap:VirtualizedContainerService.HintSize="544,2341" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[Config IsNot Nothing]" DisplayName="If Config IsNot Nothing" sap:VirtualizedContainerService.HintSize="544,2337" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <Sequence DisplayName="Sequence Config IsNot Nothing" sap:VirtualizedContainerService.HintSize="510,1087" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Sequence Config IsNot Nothing" sap:VirtualizedContainerService.HintSize="510,1084" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:RaiseAlert TimeoutMS="{x:Null}" DisplayName="Raise Alert" sap:VirtualizedContainerService.HintSize="468,191" sap2010:WorkflowViewState.IdRef="RaiseAlert_3" Notification="[Left(Config(&quot;OrchestratorQueueName_Dispatcher&quot;).ToString + &quot;System error at initialization: &quot; + SystemException.Message + &quot; at Source: &quot; + SystemException.Source,512)]" Severity="Info" />
-          <If Condition="[boolProductionRun]" DisplayName="Choose Prod/Dev mode" sap:VirtualizedContainerService.HintSize="468,460" sap2010:WorkflowViewState.IdRef="If_4">
+          <If Condition="[boolProductionRun]" DisplayName="Choose Prod/Dev mode" sap:VirtualizedContainerService.HintSize="468,458" sap2010:WorkflowViewState.IdRef="If_4">
             <If.Then>
-              <Assign sap2010:Annotation.AnnotationText="All email addresses are stored in a string separated by semicolons.&#xA;&#xA;Converting this string into an array." DisplayName="Get array with email addresses - Prod" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign sap2010:Annotation.AnnotationText="All email addresses are stored in a string separated by semicolons.&#xA;&#xA;Converting this string into an array." DisplayName="Get array with email addresses - Prod" sap:VirtualizedContainerService.HintSize="434,138" sap2010:WorkflowViewState.IdRef="Assign_6">
                 <Assign.To>
                   <OutArgument x:TypeArguments="s:String[]">[arrEmails]</OutArgument>
                 </Assign.To>
@@ -144,7 +144,7 @@
               </Assign>
             </If.Then>
             <If.Else>
-              <Assign sap2010:Annotation.AnnotationText="All email addresses are stored in a string separated by semicolons.&#xA;&#xA;Converting this string into an array." DisplayName="Get array with email addresses - Dev" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign sap2010:Annotation.AnnotationText="All email addresses are stored in a string separated by semicolons.&#xA;&#xA;Converting this string into an array." DisplayName="Get array with email addresses - Dev" sap:VirtualizedContainerService.HintSize="434,138" sap2010:WorkflowViewState.IdRef="Assign_7">
                 <Assign.To>
                   <OutArgument x:TypeArguments="s:String[]">[arrEmails]</OutArgument>
                 </Assign.To>
@@ -159,7 +159,7 @@
               </Assign>
             </If.Else>
           </If>
-          <Assign DisplayName="Assign strBody" sap:VirtualizedContainerService.HintSize="468,82" sap2010:WorkflowViewState.IdRef="Assign_8">
+          <Assign DisplayName="Assign strBody" sap:VirtualizedContainerService.HintSize="468,81" sap2010:WorkflowViewState.IdRef="Assign_8">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[strBody]</OutArgument>
             </Assign.To>
@@ -167,7 +167,7 @@
               <InArgument x:TypeArguments="x:String">[Config("Email_BodyInitFail").ToString.Replace("&lt;DateTimeNow&gt;", System.DateTime.Now.ToString("dd.MM.yyyy hh:mm tt")).Replace("&lt;strExeptionSource&gt;", If(SystemException.Source,"").ToString).Replace("&lt;strExeptionMessage&gt;", If(SystemException.Message,"").ToString)]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[strBody]" DisplayName="Send SMTP Mail Message - Failed" Email="[Config(&quot;Email_SenderAddress&quot;).ToString]" EnableSSL="True" From="[Config(&quot;Email_SenderAddress&quot;).ToString]" sap:VirtualizedContainerService.HintSize="468,146" sap2010:WorkflowViewState.IdRef="SendMail_3" IsBodyHtml="True" Name="[Config(&quot;Email_SenderName&quot;).ToString]" Port="[Integer.Parse(Config(&quot;Email_Port&quot;).ToString)]" SecureConnection="Auto" Server="[Config(&quot;Email_Server&quot;).ToString]" Subject="[Config(&quot;Email_SubjectInitFail&quot;).ToString]" To="[String.Join(&quot;;&quot;,arrEmails)]">
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[strBody]" DisplayName="Send SMTP Mail Message - Failed" Email="[Config(&quot;Email_SenderAddress&quot;).ToString]" EnableSSL="True" From="[Config(&quot;Email_SenderAddress&quot;).ToString]" sap:VirtualizedContainerService.HintSize="468,146" sap2010:WorkflowViewState.IdRef="SendMail_3" IsBodyHtml="True" Name="[Config(&quot;Email_SenderName&quot;).ToString]" Port="[Integer.Parse(Config(&quot;Email_Port&quot;).ToString)]" SecureConnection="None" Server="[Config(&quot;Email_Server&quot;).ToString]" Subject="[Config(&quot;Email_SubjectInitFail&quot;).ToString]" To="[String.Join(&quot;;&quot;,arrEmails)]">
             <ui:SendMail.Files>
               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
             </ui:SendMail.Files>
@@ -175,7 +175,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence Config Is Nothing" sap:VirtualizedContainerService.HintSize="476,1072" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence DisplayName="Sequence Config Is Nothing" sap:VirtualizedContainerService.HintSize="476,1071" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -188,7 +188,7 @@
               <OutArgument x:TypeArguments="x:String">[strEmailDetails]</OutArgument>
             </ui:GetRobotAsset.Value>
           </ui:GetRobotAsset>
-          <Assign DisplayName="strEmailDetails to dictEmailDetails" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
+          <Assign DisplayName="strEmailDetails to dictEmailDetails" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_9">
             <Assign.To>
               <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictEmailDetails]</OutArgument>
             </Assign.To>
@@ -201,10 +201,10 @@
               <OutArgument x:TypeArguments="x:String">[strBody]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">["&lt;html&gt;&lt;h4&gt;Dzień dobry,&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Data i czas procesowania:&lt;/strong&gt;&lt;br&gt;&lt;DateTimeNow&gt;&lt;/p&gt;RPA-Nadwanie Uprawnień SAP&lt;br&gt;&lt;br&gt;&lt;p&gt;Wystąpił błąd podczas inicjalizacji procesu. Plik konfiguracyjny (Config) pusty lub niedostępny.&lt;br&gt; Robot nie rozpoczął procesowania z powodu błędu.&lt;br&gt;Żadne zadanie Jira nie zostało zweryfikowane.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Żródło błędu:&lt;/strong&gt;&lt;br&gt;&lt;strExeptionSource&gt;&lt;/p&gt;&lt;p style=""color:red;""&gt;&lt;strong&gt;Komunikat o błędzie:&lt;/strong&gt;&lt;br&gt;&lt;strExeptionMessage&gt;&lt;/p&gt;&lt;p&gt;Prosze zrestartować robota ręcznie.&lt;br&gt;W razie potrzeby proszę o kontakt z zespołem RPA.&lt;/p&gt;&lt;br&gt;&lt;p&gt;Przepraszam za niedogodności.&lt;br&gt; Wiadomość wygenerowana automatycznie - prosimy nie odpowiadać na podany adres e-mail.&lt;/p&gt;&lt;p&gt;Miłego dnia! &lt;br&gt; Robot&lt;/p&gt;&lt;/html&gt;".Replace("&lt;DateTimeNow&gt;", System.DateTime.Now.ToString("dd.MM.yyyy hh:mm tt")).Replace("&lt;strExeptionSource&gt;", If(SystemException.Source,"").ToString).Replace("&lt;strExeptionMessage&gt;", If(SystemException.Message,"").ToString)]</InArgument>
+              <InArgument x:TypeArguments="x:String">["&lt;html&gt;&lt;h4&gt;Dzień dobry,&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Data i czas procesowania:&lt;/strong&gt;&lt;br&gt;&lt;DateTimeNow&gt;&lt;/p&gt;RPA-Nadwanie Uprawnień SAP&lt;br&gt;&lt;br&gt;&lt;p&gt;Wystąpił błąd podczas inicjalizacji procesu. Plik konfiguracyjny (Config) jest pusty lub niedostępny.&lt;br&gt; Robot nie rozpoczął procesowania z powodu błędu.&lt;br&gt;Żadne zadanie Jira nie zostało zweryfikowane.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Źródło błędu:&lt;/strong&gt;&lt;br&gt;&lt;strExeptionSource&gt;&lt;/p&gt;&lt;p style=""color:red;""&gt;&lt;strong&gt;Komunikat o błędzie:&lt;/strong&gt;&lt;br&gt;&lt;strExeptionMessage&gt;&lt;/p&gt;&lt;p&gt;Prosze zrestartować robota ręcznie.&lt;br&gt;W razie potrzeby proszę o kontakt z zespołem RPA.&lt;/p&gt;&lt;br&gt;&lt;p&gt;Przepraszam za niedogodności.&lt;br&gt; Wiadomość wygenerowana automatycznie - prosimy nie odpowiadać na podany adres e-mail.&lt;/p&gt;&lt;p&gt;Miłego dnia! &lt;br&gt; Robot&lt;/p&gt;&lt;/html&gt;".Replace("&lt;DateTimeNow&gt;", System.DateTime.Now.ToString("dd.MM.yyyy hh:mm tt")).Replace("&lt;strExeptionSource&gt;", If(SystemException.Source,"").ToString).Replace("&lt;strExeptionMessage&gt;", If(SystemException.Message,"").ToString)]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[strBody]" DisplayName="Send SMTP Mail Message - Failed Config is Null" Email="[dictEmailDetails(&quot;Email_SenderAddress&quot;)]" EnableSSL="True" From="[dictEmailDetails(&quot;Email_SenderAddress&quot;)]" sap:VirtualizedContainerService.HintSize="434,146" sap2010:WorkflowViewState.IdRef="SendMail_4" IsBodyHtml="True" Name="[dictEmailDetails(&quot;Email_SenderName&quot;)]" Port="[CINT(dictEmailDetails(&quot;Email_Port&quot;))]" SecureConnection="Auto" Server="[dictEmailDetails(&quot;Email_Server&quot;)]" Subject="Nadawanie Uprawnień SAP - Inicjalizacja nie powiodła się: niedostępny plik konfiguracyjny" To="[dictEmailDetails(&quot;Email_RecipmentsSE&quot;)]">
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[strBody]" DisplayName="Send SMTP Mail Message - Failed Config is Null" Email="[dictEmailDetails(&quot;Email_SenderAddress&quot;)]" EnableSSL="True" From="[dictEmailDetails(&quot;Email_SenderAddress&quot;)]" sap:VirtualizedContainerService.HintSize="434,146" sap2010:WorkflowViewState.IdRef="SendMail_4" IsBodyHtml="True" Name="[dictEmailDetails(&quot;Email_SenderName&quot;)]" Port="[CINT(dictEmailDetails(&quot;Email_Port&quot;))]" SecureConnection="None" Server="[dictEmailDetails(&quot;Email_Server&quot;)]" Subject="Nadawanie Uprawnień SAP - Inicjalizacja nie powiodła się: niedostępny plik konfiguracyjny" To="[dictEmailDetails(&quot;Email_RecipmentsSE&quot;)]">
             <ui:SendMail.Files>
               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
             </ui:SendMail.Files>
